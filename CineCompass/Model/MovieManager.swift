@@ -21,7 +21,7 @@ final class MovieManager {
         // create urlsession
         let session = URLSession(configuration: .default)
         // create url session a task
-        let task = session.dataTask(with: url) { data, response, error in
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
             if let error = error {
                 print(error)
             }
@@ -30,7 +30,7 @@ final class MovieManager {
                 return
             }
 //            print(String(data: data, encoding: .utf8)!)
-            if let movies = self.parseJSON(data) {
+            if let movies = self?.parseJSON(data) {
                 for movie in movies {
                     print("Title: \(movie.title)")
                 }
