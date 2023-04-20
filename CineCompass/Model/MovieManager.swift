@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct MovieManager {
+final class MovieManager {
     let searchURL = "https://api.themoviedb.org/3/search/movie"
     let apiKey = "replace this text with your api key"
     
@@ -30,7 +30,7 @@ struct MovieManager {
                 return
             }
 //            print(String(data: data, encoding: .utf8)!)
-            if let movies = parseJSON(data) {
+            if let movies = self.parseJSON(data) {
                 for movie in movies {
                     print("Title: \(movie.title)")
                 }
