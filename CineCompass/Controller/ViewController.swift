@@ -14,6 +14,10 @@ class ViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        let movieManager = MovieManager()
+        movieManager.searchMovies(movieName: "Interstellar")
+    }
+    
 }
 

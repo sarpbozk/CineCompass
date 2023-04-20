@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		08125BC629F0BA4600F604BF /* MovieManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08125BC529F0BA4600F604BF /* MovieManager.swift */; };
+		08125BC829F0C3EF00F604BF /* MovieData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 08125BC729F0C3EF00F604BF /* MovieData.swift */; };
 		0815C2A129EF6A340052E5D2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2A029EF6A340052E5D2 /* AppDelegate.swift */; };
 		0815C2A329EF6A340052E5D2 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2A229EF6A340052E5D2 /* SceneDelegate.swift */; };
 		0815C2A529EF6A340052E5D2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2A429EF6A340052E5D2 /* ViewController.swift */; };
@@ -36,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		08125BC529F0BA4600F604BF /* MovieManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieManager.swift; sourceTree = "<group>"; };
+		08125BC729F0C3EF00F604BF /* MovieData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieData.swift; sourceTree = "<group>"; };
 		0815C29D29EF6A340052E5D2 /* CineCompass.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CineCompass.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0815C2A029EF6A340052E5D2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0815C2A229EF6A340052E5D2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -76,6 +80,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		08125BC229F0BA1300F604BF /* View */ = {
+			isa = PBXGroup;
+			children = (
+				0815C2A629EF6A340052E5D2 /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		08125BC329F0BA1C00F604BF /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				0815C2A429EF6A340052E5D2 /* ViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		08125BC429F0BA2400F604BF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				08125BC529F0BA4600F604BF /* MovieManager.swift */,
+				08125BC729F0C3EF00F604BF /* MovieData.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		0815C29429EF6A340052E5D2 = {
 			isa = PBXGroup;
 			children = (
@@ -99,10 +128,11 @@
 		0815C29F29EF6A340052E5D2 /* CineCompass */ = {
 			isa = PBXGroup;
 			children = (
+				08125BC429F0BA2400F604BF /* Model */,
 				0815C2A029EF6A340052E5D2 /* AppDelegate.swift */,
 				0815C2A229EF6A340052E5D2 /* SceneDelegate.swift */,
-				0815C2A429EF6A340052E5D2 /* ViewController.swift */,
-				0815C2A629EF6A340052E5D2 /* Main.storyboard */,
+				08125BC329F0BA1C00F604BF /* Controller */,
+				08125BC229F0BA1300F604BF /* View */,
 				0815C2A929EF6A360052E5D2 /* Assets.xcassets */,
 				0815C2AB29EF6A360052E5D2 /* LaunchScreen.storyboard */,
 				0815C2AE29EF6A360052E5D2 /* Info.plist */,
@@ -258,8 +288,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				08125BC629F0BA4600F604BF /* MovieManager.swift in Sources */,
 				0815C2A529EF6A340052E5D2 /* ViewController.swift in Sources */,
 				0815C2A129EF6A340052E5D2 /* AppDelegate.swift in Sources */,
+				08125BC829F0C3EF00F604BF /* MovieData.swift in Sources */,
 				0815C2A329EF6A340052E5D2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
