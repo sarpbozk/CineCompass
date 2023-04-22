@@ -18,6 +18,7 @@
 		0815C2B829EF6A360052E5D2 /* CineCompassTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2B729EF6A360052E5D2 /* CineCompassTests.swift */; };
 		0815C2C229EF6A360052E5D2 /* CineCompassUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2C129EF6A360052E5D2 /* CineCompassUITests.swift */; };
 		0815C2C429EF6A360052E5D2 /* CineCompassUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0815C2C329EF6A360052E5D2 /* CineCompassUITestsLaunchTests.swift */; };
+		0833100829F37A08004F76A6 /* MovieDetailsData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0833100729F37A08004F76A6 /* MovieDetailsData.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		0815C2BD29EF6A360052E5D2 /* CineCompassUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CineCompassUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0815C2C129EF6A360052E5D2 /* CineCompassUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineCompassUITests.swift; sourceTree = "<group>"; };
 		0815C2C329EF6A360052E5D2 /* CineCompassUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CineCompassUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		0833100729F37A08004F76A6 /* MovieDetailsData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailsData.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 			children = (
 				08125BC529F0BA4600F604BF /* MovieManager.swift */,
 				08125BC729F0C3EF00F604BF /* MovieData.swift */,
+				0833100729F37A08004F76A6 /* MovieDetailsData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -291,6 +294,7 @@
 				08125BC629F0BA4600F604BF /* MovieManager.swift in Sources */,
 				0815C2A529EF6A340052E5D2 /* ViewController.swift in Sources */,
 				0815C2A129EF6A340052E5D2 /* AppDelegate.swift in Sources */,
+				0833100829F37A08004F76A6 /* MovieDetailsData.swift in Sources */,
 				08125BC829F0C3EF00F604BF /* MovieData.swift in Sources */,
 				0815C2A329EF6A340052E5D2 /* SceneDelegate.swift in Sources */,
 			);

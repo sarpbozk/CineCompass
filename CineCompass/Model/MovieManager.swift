@@ -9,6 +9,7 @@ import Foundation
 
 final class MovieManager {
     let searchURL = "https://api.themoviedb.org/3/search/movie"
+    let detailsURL = "https://api.themoviedb.org/3/movie"
     let apiKey = "replace this text with your api key"
     
     func searchMovies(movieName: String) {
