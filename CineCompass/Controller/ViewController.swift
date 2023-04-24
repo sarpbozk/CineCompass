@@ -17,6 +17,9 @@ class ViewController: UIViewController {
     @IBAction func buttonPressed(_ sender: UIButton) {
         movieManager.searchMovies(movieName: "Interstellar")
     }
-    
+        
+    @IBAction func detailsButtonPressed(_ sender: UIButton) {
+        movieManager.getMovieDetails(using: 157336)
+    }
 }
 
