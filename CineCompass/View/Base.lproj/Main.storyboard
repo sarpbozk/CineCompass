@@ -4,6 +4,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -17,35 +18,94 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWj-HW-flm">
-                                <rect key="frame" x="84" y="268" width="226" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="press to get search results"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CineCompass" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kqU-iR-hKU">
+                                <rect key="frame" x="54.666666666666657" y="59" width="284" height="61"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="50"/>
+                                <color key="textColor" name="NavigationYellow"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <searchBar contentMode="redraw" barStyle="black" searchBarStyle="minimal" placeholder="Search your favorite movies now" translucent="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oD8-7C-mwO">
+                                <rect key="frame" x="0.0" y="153" width="393" height="56"/>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <textInputTraits key="textInputTraits"/>
                                 <connections>
-                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="HRw-V7-qLr"/>
+                                    <outlet property="delegate" destination="BYZ-38-t0r" id="aFF-Bi-GER"/>
                                 </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rlC-3d-pom">
-                                <rect key="frame" x="112" y="386" width="170" height="35"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="press to get details"/>
-                                <connections>
-                                    <action selector="detailsButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="UgS-JY-rZc"/>
-                                </connections>
-                            </button>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="BackgroundGray"/>
+                        <constraints>
+                            <constraint firstItem="oD8-7C-mwO" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="0PE-Xd-Wti"/>
+                            <constraint firstItem="oD8-7C-mwO" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="7zH-rk-wN0"/>
+                            <constraint firstItem="kqU-iR-hKU" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="cad-AE-OJI"/>
+                            <constraint firstItem="kqU-iR-hKU" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="hAK-8R-9Qb"/>
+                            <constraint firstItem="oD8-7C-mwO" firstAttribute="top" secondItem="kqU-iR-hKU" secondAttribute="bottom" constant="33" id="sGq-cP-at7"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="140" y="-2"/>
+            <point key="canvasLocation" x="-760" y="-31"/>
+        </scene>
+        <!--Search Results View Controller-->
+        <scene sceneID="i8K-G2-1Lb">
+            <objects>
+                <viewController id="Ehm-x6-xKt" customClass="SearchResultsViewController" customModule="CineCompass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xtn-yN-ptU">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="cc5-Mi-GWG"/>
+                        <color key="backgroundColor" name="BackgroundGray"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="4v4-wl-mYx"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QTo-Pk-TXn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1034.3511450381679" y="-32.394366197183103"/>
+        </scene>
+        <!--Movie Details View Controller-->
+        <scene sceneID="GVm-8e-QG2">
+            <objects>
+                <viewController id="aNt-Od-ltk" customClass="MovieDetailsViewController" customModule="CineCompass" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="aLy-lf-1TV">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="KGm-3p-hnN"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="dh2-0C-plQ"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="C2y-cT-XoZ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1851" y="-32"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="rpS-cs-moF">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="5Ky-bP-zXS" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="rHT-mE-kuJ">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Ehm-x6-xKt" kind="relationship" relationship="rootViewController" id="8i8-XV-uYQ"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yfb-jk-zUc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="107.63358778625954" y="-32.394366197183103"/>
         </scene>
     </scenes>
     <resources>
+        <namedColor name="BackgroundGray">
+            <color red="0.10980392156862745" green="0.10980392156862745" blue="0.10980392156862745" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="NavigationYellow">
+            <color red="0.96078431372549022" green="0.77254901960784317" blue="0.094117647058823528" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
