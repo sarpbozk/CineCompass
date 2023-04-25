@@ -8,13 +8,39 @@
 import UIKit
 
 class SearchResultsViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
     
+    @IBOutlet weak var tableView: UITableView!
+    
+    let movies = [
+        Movie(id: 157336, title: "Interstellar"),
+        Movie(id: 000000, title: "BlahBlah"),
+        Movie(id: 111111, title: "BlehBleh"),
+        Movie(id: 222222, title: "BluhBluh"),
+        Movie(id: 333333, title: "BlihBlih"),
+        Movie(id: 157336, title: "Interstellar"),
+        Movie(id: 000000, title: "BlahBlah"),
+        Movie(id: 111111, title: "BlehBleh"),
+        Movie(id: 222222, title: "BluhBluh"),
+        Movie(id: 333333, title: "BlihBlih"),
+        Movie(id: 157336, title: "Interstellar"),
+        Movie(id: 000000, title: "BlahBlah"),
+        Movie(id: 111111, title: "BlehBleh"),
+        Movie(id: 222222, title: "BluhBluh"),
+        Movie(id: 333333, title: "BlihBlih"),
+        Movie(id: 157336, title: "Interstellar"),
+        Movie(id: 000000, title: "BlahBlah"),
+        Movie(id: 111111, title: "BlehBleh"),
+        Movie(id: 222222, title: "BluhBluh"),
+        Movie(id: 333333, title: "BlihBlih")
+    ]
+    
+    override func viewDidLoad() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        super.viewDidLoad()
+        tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
+
+    }
 
     /*
     // MARK: - Navigation
@@ -26,4 +52,18 @@ class SearchResultsViewController: UIViewController {
     }
     */
 
+}
+
+extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        movies.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MovieCell
+        cell.movieName.text = movies[indexPath.row].title
+        return cell
+    }
+    
 }

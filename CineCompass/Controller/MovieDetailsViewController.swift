@@ -8,7 +8,12 @@
 import UIKit
 
 class MovieDetailsViewController: UIViewController {
-
+    @IBOutlet weak var moviePoster: UIImageView!
+    @IBOutlet weak var movieTitle: UILabel!
+    @IBOutlet weak var movieReleaseDate: UILabel!
+    @IBOutlet weak var movieVoteAvg: UILabel!
+    @IBOutlet weak var movieGenres: UILabel!
+    @IBOutlet weak var movieOverview: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
 
