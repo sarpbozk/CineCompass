@@ -30,7 +30,6 @@ final class MovieManager {
                 print("No data received")
                 return
             }
-            //            print(String(data: data, encoding: .utf8)!)
             if let movies = self?.parseMovieData(data) {
                 for movie in movies {
                     print("Title: \(movie.title)")
@@ -85,10 +84,10 @@ final class MovieManager {
         }
     }
     
-    func parseMovieDetailsData(_ data: Data) -> MovieDetailsData? {
+    func parseMovieDetailsData(_ data: Data) -> MovieDetailsDataResponse? {
         let decoder = JSONDecoder()
         do {
-            let decodedData = try decoder.decode(MovieDetailsData.self, from: data)
+            let decodedData = try decoder.decode(MovieDetailsDataResponse.self, from: data)
             return decodedData
         } catch {
             print("error decoding JSON")
