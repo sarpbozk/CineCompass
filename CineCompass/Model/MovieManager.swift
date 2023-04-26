@@ -7,18 +7,28 @@
 
 import Foundation
 
+protocol MovieManagerDelegate: AnyObject {
+    func didReceiveMovies(_ movies: [Movie])
+}
+protocol MovieManagerDetailsDelegate: AnyObject {
+    func didReceiveMovieDetails(_ movieDetails: MovieDetailsDataResponse)
+}
+
 final class MovieManager {
     let searchURL = "https://api.themoviedb.org/3/search/movie"
     let detailsURL = "https://api.themoviedb.org/3/movie"
     let apiKey = "87027965472f4df58ab7f4cfb6212185"
-    
+    weak var delegate: MovieManagerDelegate?
+    weak var detailsDelegate: MovieManagerDetailsDelegate?
     func searchMovies(movieName: String) {
-        let urlString = "\(searchURL)?api_key=\(apiKey)&query=\(movieName)"
+        let encodedMovieName = movieName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
+        let urlString = "\(searchURL)?api_key=\(apiKey)&query=\(encodedMovieName)"
         // create url
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return
         }
+//        print("URL: \(url)")
         // create urlsession
         let session = URLSession(configuration: .default)
         // create url session a task
@@ -30,11 +40,9 @@ final class MovieManager {
                 print("No data received")
                 return
             }
+//            print("ReceivedData: \(String(data: data, encoding: .utf8) ?? "No Data")")
             if let movies = self?.parseMovieData(data) {
-                for movie in movies {
-                    print("Title: \(movie.title)")
-                    print("id: \(movie.id)")
-                }
+                self?.delegate?.didReceiveMovies(movies)
             }
         }
         // start the task
@@ -59,14 +67,7 @@ final class MovieManager {
                 return
             }
             if let movieDetails = self?.parseMovieDetailsData(data) {
-                print("Title: \(movieDetails.title) ")
-                print("Relased in: \(movieDetails.releaseDate)")
-                for genre in movieDetails.genres {
-                    print(genre.name)
-                }
-                print("Average Score: \(movieDetails.voteAverage) ")
-                print("Lenght: \(movieDetails.runtime) minutes")
-                print("Overview: \(movieDetails.overview)")
+                self?.detailsDelegate?.didReceiveMovieDetails(movieDetails)
             }
         }
         task.resume()
@@ -88,6 +89,7 @@ final class MovieManager {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(MovieDetailsDataResponse.self, from: data)
+//            print("Parsed movies: \(decodedData.results)")
             return decodedData
         } catch {
             print("error decoding JSON")
