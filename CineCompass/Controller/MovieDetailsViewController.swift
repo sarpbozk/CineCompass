@@ -8,6 +8,7 @@
 import UIKit
 
 class MovieDetailsViewController: UIViewController {
+    var movieDetails: MovieDetailsDataResponse?
     @IBOutlet weak var moviePoster: UIImageView!
     @IBOutlet weak var movieTitle: UILabel!
     @IBOutlet weak var movieReleaseDate: UILabel!
@@ -16,19 +17,10 @@ class MovieDetailsViewController: UIViewController {
     @IBOutlet weak var movieOverview: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        movieTitle.text = movieDetails?.title
+        movieReleaseDate.text = movieDetails?.releaseDate
+        movieVoteAvg.text = String(format: "%.1f", movieDetails?.voteAverage ?? -9999.9999)
+        movieGenres.text = (movieDetails?.genres[0].name ?? " ") + "   " + (movieDetails?.genres[1].name ?? " ") + "   " + (movieDetails?.genres[2].name ?? " ")
+        movieOverview.text = movieDetails?.overview
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

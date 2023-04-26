@@ -12,27 +12,33 @@ class SearchResultsViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     
     var movies: [Movie] = []
+    let movieManager = MovieManager()
     
     override func viewDidLoad() {
         tableView.dataSource = self
         tableView.delegate = self
+        movieManager.detailsDelegate = self
         super.viewDidLoad()
         tableView.register(UINib(nibName: K.cellNibName, bundle: nil), forCellReuseIdentifier: K.cellIdentifier)
 
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == K.detailSegue {
+            if let movieDetailsVC = segue.destination as? MovieDetailsViewController, let movieDetails = sender as? MovieDetailsDataResponse {
+                movieDetailsVC.movieDetails = movieDetails
+            }
+        }
     }
-    */
 
 }
-
+extension SearchResultsViewController: MovieManagerDetailsDelegate {
+    func didReceiveMovieDetails(_ movieDetails: MovieDetailsDataResponse) {
+        DispatchQueue.main.async {
+            self.performSegue(withIdentifier: K.detailSegue, sender: movieDetails)
+        }
+    }
+}
 extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -47,5 +53,6 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedMovie = movies[indexPath.row]
+        movieManager.getMovieDetails(using: selectedMovie.id)
     }
 }

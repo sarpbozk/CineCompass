@@ -10,12 +10,16 @@ import Foundation
 protocol MovieManagerDelegate: AnyObject {
     func didReceiveMovies(_ movies: [Movie])
 }
+protocol MovieManagerDetailsDelegate: AnyObject {
+    func didReceiveMovieDetails(_ movieDetails: MovieDetailsDataResponse)
+}
 
 final class MovieManager {
     let searchURL = "https://api.themoviedb.org/3/search/movie"
     let detailsURL = "https://api.themoviedb.org/3/movie"
     let apiKey = "87027965472f4df58ab7f4cfb6212185"
     weak var delegate: MovieManagerDelegate?
+    weak var detailsDelegate: MovieManagerDetailsDelegate?
     func searchMovies(movieName: String) {
         let encodedMovieName = movieName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString = "\(searchURL)?api_key=\(apiKey)&query=\(encodedMovieName)"
@@ -63,14 +67,7 @@ final class MovieManager {
                 return
             }
             if let movieDetails = self?.parseMovieDetailsData(data) {
-                print("Title: \(movieDetails.title) ")
-                print("Relased in: \(movieDetails.releaseDate)")
-                for genre in movieDetails.genres {
-                    print(genre.name)
-                }
-                print("Average Score: \(movieDetails.voteAverage) ")
-                print("Lenght: \(movieDetails.runtime) minutes")
-                print("Overview: \(movieDetails.overview)")
+                self?.detailsDelegate?.didReceiveMovieDetails(movieDetails)
             }
         }
         task.resume()
