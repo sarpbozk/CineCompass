@@ -145,9 +145,9 @@
 		0815C29F29EF6A340052E5D2 /* CineCompass */ = {
 			isa = PBXGroup;
 			children = (
-				08125BC429F0BA2400F604BF /* Model */,
 				0815C2A029EF6A340052E5D2 /* AppDelegate.swift */,
 				0815C2A229EF6A340052E5D2 /* SceneDelegate.swift */,
+				08125BC429F0BA2400F604BF /* Model */,
 				08125BC329F0BA1C00F604BF /* Controller */,
 				08125BC229F0BA1300F604BF /* View */,
 				0815C2A929EF6A360052E5D2 /* Assets.xcassets */,

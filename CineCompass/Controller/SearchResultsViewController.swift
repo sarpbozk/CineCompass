@@ -11,28 +11,7 @@ class SearchResultsViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     
-    let movies = [
-        Movie(id: 157336, title: "Interstellar"),
-        Movie(id: 000000, title: "BlahBlah"),
-        Movie(id: 111111, title: "BlehBleh"),
-        Movie(id: 222222, title: "BluhBluh"),
-        Movie(id: 333333, title: "BlihBlih"),
-        Movie(id: 157336, title: "Interstellar"),
-        Movie(id: 000000, title: "BlahBlah"),
-        Movie(id: 111111, title: "BlehBleh"),
-        Movie(id: 222222, title: "BluhBluh"),
-        Movie(id: 333333, title: "BlihBlih"),
-        Movie(id: 157336, title: "Interstellar"),
-        Movie(id: 000000, title: "BlahBlah"),
-        Movie(id: 111111, title: "BlehBleh"),
-        Movie(id: 222222, title: "BluhBluh"),
-        Movie(id: 333333, title: "BlihBlih"),
-        Movie(id: 157336, title: "Interstellar"),
-        Movie(id: 000000, title: "BlahBlah"),
-        Movie(id: 111111, title: "BlehBleh"),
-        Movie(id: 222222, title: "BluhBluh"),
-        Movie(id: 333333, title: "BlihBlih")
-    ]
+    var movies: [Movie] = []
     
     override func viewDidLoad() {
         tableView.dataSource = self
