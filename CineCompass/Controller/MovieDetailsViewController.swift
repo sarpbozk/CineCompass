@@ -20,7 +20,16 @@ class MovieDetailsViewController: UIViewController {
         movieTitle.text = movieDetails?.title
         movieReleaseDate.text = movieDetails?.releaseDate
         movieVoteAvg.text = String(format: "%.1f", movieDetails?.voteAverage ?? -9999.9999)
-        movieGenres.text = (movieDetails?.genres[0].name ?? " ") + "   " + (movieDetails?.genres[1].name ?? " ") + "   " + (movieDetails?.genres[2].name ?? " ")
+        if let genres = movieDetails?.genres {
+            var genreNames: [String] = []
+            for genre in genres {
+                genreNames.append(genre.name)
+            }
+            movieGenres.text = genreNames.joined(separator: ", ")
+        }
+        else {
+            movieGenres.text = " No genres defined"
+        }
         movieOverview.text = movieDetails?.overview
         
         let baseURL = "https://image.tmdb.org/t/p/w500/"
