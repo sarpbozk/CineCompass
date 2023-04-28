@@ -15,14 +15,12 @@ protocol MovieManagerDetailsDelegate: AnyObject {
 }
 
 final class MovieManager {
-    let searchURL = "https://api.themoviedb.org/3/search/movie"
-    let detailsURL = "https://api.themoviedb.org/3/movie"
-    let apiKey = "87027965472f4df58ab7f4cfb6212185"
+
     weak var delegate: MovieManagerDelegate?
     weak var detailsDelegate: MovieManagerDetailsDelegate?
     func searchMovies(movieName: String) {
         let encodedMovieName = movieName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
-        let urlString = "\(searchURL)?api_key=\(apiKey)&query=\(encodedMovieName)"
+        let urlString = "\(K.searchURL)?api_key=\(K.apiKey)&query=\(encodedMovieName)"
         // create url
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
@@ -50,7 +48,7 @@ final class MovieManager {
     }
     
     func getMovieDetails(using movieID: Int) {
-        let urlString = "\(detailsURL)/\(movieID)?api_key=\(apiKey)"
+        let urlString = "\(K.detailsURL)/\(movieID)?api_key=\(K.apiKey)"
         guard let url = URL(string: urlString) else {
             print("Invalid URL")
             return

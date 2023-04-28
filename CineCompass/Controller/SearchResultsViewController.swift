@@ -49,7 +49,7 @@ extension SearchResultsViewController: UITableViewDataSource, UITableViewDelegat
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: K.cellIdentifier, for: indexPath) as! MovieCell
         cell.movieName.text = movies[indexPath.row].title
-        let baseURL = "https://image.tmdb.org/t/p/w500/"
+        let baseURL = K.posterImageBaseUrl
         if let posterPath = movies[indexPath.row].posterPath {
             let posterURL = URL(string: baseURL + posterPath)
             cell.moviePoster.kf.setImage(with: posterURL)
