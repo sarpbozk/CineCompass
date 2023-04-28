@@ -15,64 +15,32 @@ protocol MovieManagerDetailsDelegate: AnyObject {
 }
 
 final class MovieManager {
-
+    
     weak var delegate: MovieManagerDelegate?
     weak var detailsDelegate: MovieManagerDetailsDelegate?
+    private let session = URLSession(configuration: .default)
+    
     func searchMovies(movieName: String) {
         let encodedMovieName = movieName.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) ?? ""
         let urlString = "\(K.searchURL)?api_key=\(K.apiKey)&query=\(encodedMovieName)"
-        // create url
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-//        print("URL: \(url)")
-        // create urlsession
-        let session = URLSession(configuration: .default)
-        // create url session a task
-        let task = session.dataTask(with: url) { [weak self] data, response, error in
-            if let error = error {
-                print(error)
-            }
-            guard let data = data else {
-                print("No data received")
-                return
-            }
-//            print("ReceivedData: \(String(data: data, encoding: .utf8) ?? "No Data")")
-            if let movies = self?.parseMovieData(data) {
-                self?.delegate?.didReceiveMovies(movies)
+        fetchData(urlString: urlString) { data in
+            if let movies = self.parseMovieData(data) {
+                self.delegate?.didReceiveMovies(movies)
             }
         }
-        // start the task
-        task.resume()
     }
     
     func getMovieDetails(using movieID: Int) {
         let urlString = "\(K.detailsURL)/\(movieID)?api_key=\(K.apiKey)"
-        guard let url = URL(string: urlString) else {
-            print("Invalid URL")
-            return
-        }
-        // create urlsession
-        let session = URLSession(configuration: .default)
-        // create url session a task
-        let task = session.dataTask(with: url) { [weak self] data, response, error in
-            if let error = error {
-                print(error)
-            }
-            guard let data = data else {
-                print("no data received")
-                return
-            }
-            if let movieDetails = self?.parseMovieDetailsData(data) {
-                self?.detailsDelegate?.didReceiveMovieDetails(movieDetails)
+        fetchData(urlString: urlString) { data in
+            if let movieDetails = self.parseMovieDetailsData(data) {
+                self.detailsDelegate?.didReceiveMovieDetails(movieDetails)
             }
         }
-        task.resume()
     }
     
     
-    func parseMovieData(_ data: Data) -> [Movie]? {
+    private func parseMovieData(_ data: Data) -> [Movie]? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(MovieData.self, from: data)
@@ -83,15 +51,33 @@ final class MovieManager {
         }
     }
     
-    func parseMovieDetailsData(_ data: Data) -> MovieDetailsDataResponse? {
+    private func parseMovieDetailsData(_ data: Data) -> MovieDetailsDataResponse? {
         let decoder = JSONDecoder()
         do {
             let decodedData = try decoder.decode(MovieDetailsDataResponse.self, from: data)
-//            print("Parsed movies: \(decodedData.results)")
             return decodedData
         } catch {
             print("error decoding JSON")
             return nil
         }
+    }
+    
+    private func fetchData(urlString: String, completion: @escaping (Data) -> Void) {
+        guard let url = URL(string: urlString) else {
+            print("Invalid URL")
+            return
+        }
+        let task = session.dataTask(with: url) { [weak self] data, response, error in
+            guard self != nil else {return}
+            if let error = error {
+                print(error)
+            }
+            guard let data = data else {
+                print("no data received")
+                return
+            }
+            completion(data)
+        }
+        task.resume()
     }
 }
