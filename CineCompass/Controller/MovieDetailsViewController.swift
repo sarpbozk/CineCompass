@@ -32,9 +32,8 @@ class MovieDetailsViewController: UIViewController {
         }
         movieOverview.text = movieDetails?.overview
         
-        let baseURL = K.posterImageBaseUrl
         if let posterPath = movieDetails?.posterPath {
-            let posterURL = URL(string: baseURL + posterPath)
+            let posterURL = URL(string: K.posterImageBaseUrl + posterPath)
             moviePoster.kf.setImage(with: posterURL)
         }
     }
