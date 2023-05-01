@@ -147,7 +147,11 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SId-Kk-ihu">
-                                <rect key="frame" x="50" y="116" width="293" height="319"/>
+                                <rect key="frame" x="96.666666666666686" y="56" width="200" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="3QY-v7-v4D"/>
+                                    <constraint firstAttribute="height" constant="300" id="lnp-fM-EBn"/>
+                                </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="KGm-3p-hnN"/>
@@ -155,21 +159,19 @@
                         <constraints>
                             <constraint firstItem="7qk-KD-ywo" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="5" id="BGl-cN-1Go"/>
                             <constraint firstItem="vYD-mb-wpl" firstAttribute="top" secondItem="ZIm-1w-vth" secondAttribute="bottom" constant="8" id="DOW-MT-OJu"/>
+                            <constraint firstItem="SId-Kk-ihu" firstAttribute="top" secondItem="KGm-3p-hnN" secondAttribute="top" id="GXE-9j-HUB"/>
                             <constraint firstItem="7qk-KD-ywo" firstAttribute="top" secondItem="P8z-9c-PKr" secondAttribute="bottom" constant="8" id="Gdt-PB-grQ"/>
-                            <constraint firstItem="SId-Kk-ihu" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="50" id="HyR-nZ-ISV"/>
                             <constraint firstItem="ZIm-1w-vth" firstAttribute="top" secondItem="dCe-N7-ryW" secondAttribute="bottom" constant="10" id="L3y-Jn-1cZ"/>
                             <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="P8z-9c-PKr" secondAttribute="trailing" constant="5" id="NCr-H7-7lT"/>
-                            <constraint firstItem="dCe-N7-ryW" firstAttribute="top" secondItem="SId-Kk-ihu" secondAttribute="bottom" constant="10" id="NSl-le-NJn"/>
                             <constraint firstItem="dCe-N7-ryW" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="5" id="QT3-qg-BDr"/>
                             <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="ZIm-1w-vth" secondAttribute="trailing" constant="5" id="SFV-YI-8Ff"/>
-                            <constraint firstItem="SId-Kk-ihu" firstAttribute="top" secondItem="KGm-3p-hnN" secondAttribute="top" constant="60" id="Wl0-Hz-Rwc"/>
                             <constraint firstItem="vYD-mb-wpl" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="5" id="ZOE-oM-2vV"/>
                             <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="7qk-KD-ywo" secondAttribute="trailing" constant="5" id="ano-p3-XgR"/>
                             <constraint firstItem="P8z-9c-PKr" firstAttribute="top" secondItem="vYD-mb-wpl" secondAttribute="bottom" constant="8" id="bNI-4d-Uea"/>
+                            <constraint firstItem="SId-Kk-ihu" firstAttribute="centerX" secondItem="aLy-lf-1TV" secondAttribute="centerX" id="ev4-Om-2ks"/>
                             <constraint firstItem="7qk-KD-ywo" firstAttribute="bottom" secondItem="KGm-3p-hnN" secondAttribute="bottom" constant="-30" id="f2e-qe-S4s"/>
                             <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="vYD-mb-wpl" secondAttribute="trailing" constant="5" id="gQk-1d-KJZ"/>
                             <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="dCe-N7-ryW" secondAttribute="trailing" constant="5" id="jdk-lf-Yhh"/>
-                            <constraint firstItem="KGm-3p-hnN" firstAttribute="trailing" secondItem="SId-Kk-ihu" secondAttribute="trailing" constant="50" id="mPD-pB-gNn"/>
                             <constraint firstItem="ZIm-1w-vth" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="5" id="o5X-SP-zvQ"/>
                             <constraint firstItem="P8z-9c-PKr" firstAttribute="leading" secondItem="KGm-3p-hnN" secondAttribute="leading" constant="5" id="xwo-aV-RYp"/>
                         </constraints>
