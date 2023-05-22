@@ -31,6 +31,24 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="aFF-Bi-GER"/>
                                 </connections>
                             </searchBar>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eGZ-zj-lhz">
+                                <rect key="frame" x="68" y="283" width="258" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="get popular movies test button"/>
+                                <connections>
+                                    <action selector="getpopularmoviestestbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Qzr-Rv-kNe"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0oW-0M-heK">
+                                <rect key="frame" x="60" y="466" width="275" height="35"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="get upcoming movies test button"/>
+                                <connections>
+                                    <action selector="getupcomingmoviestestbutton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="b3S-PR-KaW"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="BackgroundGray"/>

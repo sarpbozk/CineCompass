@@ -9,6 +9,8 @@ import Foundation
 
 protocol MovieManagerDelegate: AnyObject {
     func didReceiveMovies(_ movies: [Movie])
+    func didReceivePopularMovies(_ movies: [Movie])
+    func didReceiveUpcomingMovies(_ movies: [Movie])
 }
 protocol MovieManagerDetailsDelegate: AnyObject {
     func didReceiveMovieDetails(_ movieDetails: MovieDetailsDataResponse)
@@ -18,6 +20,7 @@ final class MovieManager {
     
     weak var delegate: MovieManagerDelegate?
     weak var detailsDelegate: MovieManagerDetailsDelegate?
+    
     private let session = URLSession(configuration: .default)
     
     func searchMovies(movieName: String) {
@@ -35,6 +38,27 @@ final class MovieManager {
         fetchData(urlString: urlString) { data in
             if let movieDetails = self.parseMovieDetailsData(data) {
                 self.detailsDelegate?.didReceiveMovieDetails(movieDetails)
+            }
+        }
+    }
+    
+    func getPopularMovies() {
+        let urlString = "\(K.popularMoviesURL)?api_key=\(K.apiKey)&language=en-US&page=1"
+        fetchData(urlString: urlString) { data in
+            if let movies = self.parseMovieData(data) {
+                self.delegate?.didReceivePopularMovies(movies)
+                print(movies)
+            }
+        }
+    }
+    
+    func getUpcomingMovies() {
+        let urlString = "\(K.upcomingMoviesURL)?api_key=\(K.apiKey)&language=en-US&page=1"
+        fetchData(urlString: urlString) { data in
+            if let movies = self.parseMovieData(data) {
+                self.delegate?.didReceiveUpcomingMovies(movies)
+                print(movies)
+
             }
         }
     }
