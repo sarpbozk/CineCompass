@@ -26,6 +26,14 @@ class SearchViewController: UIViewController {
             }
         }
     }
+    @IBAction func getpopularmoviestestbutton(_ sender: UIButton) {
+        movieManager.getPopularMovies()
+    }
+    
+    
+    @IBAction func getupcomingmoviestestbutton(_ sender: UIButton) {
+        movieManager.getUpcomingMovies()
+    }
 }
 extension SearchViewController: MovieManagerDelegate {
     func didReceiveMovies(_ movies: [Movie]) {
@@ -34,6 +42,12 @@ extension SearchViewController: MovieManagerDelegate {
 //            print("Performing segue with movies: \(movies)")
             self.performSegue(withIdentifier: K.searchSegue, sender: movies)
         }
+    }
+    func didReceivePopularMovies(_ movies: [Movie]) {
+        
+    }
+    func didReceiveUpcomingMovies(_ movies: [Movie]) {
+        
     }
 }
 extension SearchViewController: UISearchBarDelegate {
