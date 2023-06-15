@@ -30,3 +30,10 @@ https://youtube.com/shorts/eDcG66ZUFBM
 ## Installation
 
 You can clone the GitHub repository:
+git clone https://github.com/username/CineCompass.git
+
+And then install the dependencies:
+pod install
+
+
+
